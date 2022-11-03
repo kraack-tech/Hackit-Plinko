@@ -22,6 +22,7 @@ function setup() {
   setupGround();
   setupPins();
   generateNewBall();
+    //console.log(  generateNewBall())
 }
 ///////////////////////////////////////////////////////////
 function draw() {
@@ -31,18 +32,27 @@ function draw() {
   drawPins();
   drawBalls();
   drawGround();
+
+
 }
 ///////////////////////////////////////////////////////////
 function keyPressed(){
   generateNewBall();
 }
+
 ///////////////////////////////////////////////////////////
 function setupGround(){
   //your code here
+  ground = Bodies.rectangle(width/2, height-20, width, 15, {isStatic: true, restitution: 1});
+  World.add(engine.world, ground);
+
 }
 ///////////////////////////////////////////////////////////
 function drawGround(){
   //your code here
+  fill(128);
+  drawVertices(ground.vertices);
+
 }
 ///////////////////////////////////////////////////////////
 function setupPins(){
@@ -75,10 +85,24 @@ function drawPins(){
 ///////////////////////////////////////////////////////////
 function generateNewBall(){
   //your code here
-}
+    var b = Bodies.circle(width/2.2,0,15, {restitution: 1, friction: 0.0001});
+    World.add(engine.world, [b]);
+    balls.push(b);
+    
+  }
+
 ///////////////////////////////////////////////////////////
 function drawBalls(){
   //your code here
+  fill(255, 0, 0);
+  for (var i=0; i<balls.length; i++){
+    drawVertices(balls[i].vertices);
+  }
+}
+
+///////////////////////////////////////////////////////////
+function mousePressed(){
+  generateNewBall();
 }
 
 ///////////////////////////////////////////////////////////
