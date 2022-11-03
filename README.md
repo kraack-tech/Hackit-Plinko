@@ -1,4 +1,4 @@
-# Hackit-Particles
+# Hackit-Plinko
 
 ### Press spacebar to add balls
 
